@@ -31,10 +31,10 @@ The category is displayed after the answerer has decided on an object. Questione
   Stephanie: Implement memory allocation on the answerer's end.
 - <i> Jan 11 <i>
   Christina + Stephanie: Networking between the two players 
-_Jan 13 -_
+- <i> Jan 13 <i>
   Christina: Implement end of game screen.
   Stephanie: Start debugging.
-_Jan 15 -_
+- <i> Jan 15 <i>
   Christina + Stephanie: Debug.
-_Jan 17 -_
+- <i> Jan 17 <i>
 Submit final product
