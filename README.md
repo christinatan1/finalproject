@@ -9,8 +9,7 @@ Our project mimics the game 20 Questions. There are two types of players: an ans
 The category is displayed after the answerer has decided on an object. Questioner(s) and answerer take turns asking questions and answering. The number of remaining questions is displayed for all players after each answer. The program also records the number of wins/losses from each player. At the end of the game, the scoreboard appears and players have the option of another round. 
 
 # Systems concepts
-- Memory Allocation: 
-  At the beginning of the game, memory will be allocated to remember the names of the players and the correct answer. Memory will also be allocated continuously with the score count.
+- Memory Allocation
 - Processes
 - Piping
 - Shared Memory/Semaphores
