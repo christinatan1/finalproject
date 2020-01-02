@@ -23,13 +23,13 @@ The category is displayed after the answerer has decided on an object. Questione
 - endScreen()
 
 ## Timeline:
-_Jan 5 -_
+- <i> Jan 5 <i>
   Christina: Implement welcome screen and player selection.
   Stephanie: Implement answerer’s actions of choosing a category and object.
-_Jan 8 -_
+- <i> Jan 8 <i>
   Christina: Implement memory allocation on the questioner's end.
   Stephanie: Implement memory allocation on the answerer's end.
-_Jan 11 -_
+- <i> Jan 11 <i>
   Christina + Stephanie: Networking between the two players 
 _Jan 13 -_
   Christina: Implement end of game screen.
