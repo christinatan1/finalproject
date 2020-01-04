@@ -10,6 +10,7 @@ The category is displayed after the answerer has decided on an object. Questione
 
 # Systems concepts
 - Memory Allocation
+
 At the beginning of the game, memory will be allocated to remember the names of the players, the correct answer, and the number of the question being asked (ex: __ / 20 would be displayed). Memory will also be allocated continuously with the score count.
 
 - Processes
@@ -19,9 +20,11 @@ At the beginning of the game, memory will be allocated to remember the names of 
 
 
 - Networking
+
 Members from different computers can play the game, 4 players max.
 
--Signals
+- Signals
+
 Relay an error if answerer returns an answer that is not "yes" or "no"
 
 # General Functions:
