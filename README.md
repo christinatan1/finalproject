@@ -10,6 +10,7 @@ The category is displayed after the answerer has decided on an object. Questione
 
 # Systems concepts
 - Memory Allocation
+At the beginning of the game, memory will be allocated to remember the names of the players and the correct answer. Memory will also be allocated continuously with the score count.
 - Processes
 - Piping
 - Shared Memory/Semaphores
@@ -24,17 +25,28 @@ The category is displayed after the answerer has decided on an object. Questione
 
 ## Timeline:
 - <i> Jan 5: <i>
+  
   Christina: Implement welcome screen and player selection.
   Stephanie: Implement answerer’s actions of choosing a category and object.
+  
 - <i> Jan 8: <i>
+  
   Christina: Implement memory allocation on the questioner's end.
   Stephanie: Implement memory allocation on the answerer's end.
+  
 - <i> Jan 11: <i>
+  
   Christina + Stephanie: Networking between the two players 
+  
 - <i> Jan 13: <i>
+  
   Christina: Implement end of game screen.
   Stephanie: Start debugging.
+  
 - <i> Jan 15: <i>
+  
   Christina + Stephanie: Debug.
+  
 - <i> Jan 17: <i>
+  
 Submit final product
