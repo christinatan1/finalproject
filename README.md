@@ -55,4 +55,4 @@ Our project mimics the game 20 Questions. There are two types of players: an ans
 
 <i> Jan 17: <i>
 
-  Submit final product
+  Submit final product.
