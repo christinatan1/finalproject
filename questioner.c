@@ -5,8 +5,11 @@
 #include <errno.h>
 #include <fcntl.h>
 
-void askObject(){
-
+void askQuestioner(){
+  printf("You have chosen to be a questioner! \n");
+  printf("Please wait until the answerer has chosen their object.\n");
+  getQuestion();
+  
 }
 
 //more functions to be added

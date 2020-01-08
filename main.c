@@ -5,8 +5,8 @@
 #include <errno.h>
 #include <fcntl.h>
 
-#include <question.h>
-#include <answer.h>
+// #include <question.h>
+// #include <answer.h>
 
 int main(int argc, char * argv[]){
 
@@ -16,11 +16,11 @@ int main(int argc, char * argv[]){
   playerSelection();
 
   if (!strcmp(argv[1],"a")){
-    askObject(); // ask for object/person
+    askQuestioner(); 
   } else if (!strcmp(argv[1],"q")){
-    // functions for answerers
+    askAnswerer();
   } else {
-    printf("Error: invalid option.\n");
+    printf("Error: invalid option. Please enter a or q.\n");
   }
 
   endScreen();
@@ -28,13 +28,16 @@ int main(int argc, char * argv[]){
 }
 
 void welcomeScreen(){
-  printf("----------- WELCOME TO 20 QUESTIONS -----------\n");
-  // will make this better later
+  printf("\n\n\n\n");
+  printf("----------------------------------\n\n\n");
+  printf("WELCOME TO 20 QUESTIONS!\n\n");
+  printf("By Christina Tan and Stephanie Liu\n\n");
+  printf("----------------------------------\n\n\n");
 }
 
 void playerSelection(){
-  printf("Choose your player : \n");
-  printf(" \t answerer or questioner (a | w)");
+  printf("Choose your player: \n");
+  printf(" \t answerer or questioner (a / q)");
   fgets(player, 5, stdin);
   player[strlen(player) - 1] = 0;
 }
