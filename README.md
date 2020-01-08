@@ -42,8 +42,7 @@ Our project mimics the game 20 Questions. There are two types of players: an ans
 
 <i> Jan 11: <i>
 
-  Christina: Finish implementing allocation of memory on questioner's end and answerer's end.
-  Stephanie: Networking between the two players.
+  Christina + Stephanie: Networking between the two players.
 
 <i> Jan 13: <i>
 
