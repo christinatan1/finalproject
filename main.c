@@ -15,8 +15,9 @@ int main(int argc, char * argv[]){
   char player[100];
   playerSelection();
 
+
   if (!strcmp(argv[1],"a")){
-    askQuestioner(); 
+    askQuestioner();
   } else if (!strcmp(argv[1],"q")){
     askAnswerer();
   } else {
