@@ -27,7 +27,7 @@ char * askObject(){
 }
 
 void askAnswerer(){
-  printf("You have chosen to be a questioner!\n\n");
+  printf("You have chosen to be a answerer!\n\n");
   sleep(1);
   char * category = askCategory();
   char * object = askObject();
