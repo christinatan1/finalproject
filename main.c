@@ -5,27 +5,28 @@
 #include <errno.h>
 #include <fcntl.h>
 
-// #include <question.h>
-// #include <answer.h>
+#include "qfunctions.h"
+#include "afunctions.h"
+#include "header.h"
 
 int main(int argc, char * argv[]){
 
   welcomeScreen();
 
   char player[100];
+  char winner[100];
   playerSelection();
-
 
   if (!strcmp(argv[1],"a")){
     askQuestioner();
   } else if (!strcmp(argv[1],"q")){
     askAnswerer();
   } else {
-    printf("Error: invalid option. Please enter a or q.\n");
+    printf("Error: invalid option. Please enter A or Q.\n");
   }
 
   endScreen();
-  printScoreboard();
+  //printScoreboard();
 }
 
 void welcomeScreen(){
@@ -38,7 +39,17 @@ void welcomeScreen(){
 
 void playerSelection(){
   printf("Choose your player: \n");
-  printf(" \t answerer or questioner (a / q)");
+  printf(" \t answerer or questioner (a/q)");
   fgets(player, 5, stdin);
   player[strlen(player) - 1] = 0;
+}
+
+void endScreen(){
+  printf("----------------------------------\n\n\n");
+  printf("THANKS FOR PLAYING!\n\n");
+  printf("Winner: %s", winner);
+  printf("\n\n Play Again? (y/n)");
+  char next[100];
+  fgets(next, 2, stdin);
+  printf("----------------------------------\n\n\n");
 }
