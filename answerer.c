@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "aquestions.h"
+#include "headers.h"
 
 
 char * askCategory(){
@@ -23,8 +23,8 @@ char * askCategory(){
   return category;
 }
 
-char * askObject(){
-  printf("Please choose an object from the category %s: ", askCategory());
+char * askObject(char * category){
+  printf("Please choose an object from the category %s: ", category);
   char * object = malloc(50);
   fgets(object, 50, stdin);
   object[strlen(object) - 1] = 0;
@@ -35,7 +35,7 @@ void askAnswerer(){
   printf("You have chosen to be a answerer!\n\n");
   sleep(1);
   char * category = askCategory();
-  char * object = askObject();
+  char * object = askObject(category);
   sleep(1);
   printf("\nYou have chosen...\tCategory: %s\t\tObject: %s\n", category, object);
 }

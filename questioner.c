@@ -8,7 +8,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#include "qfunction.h"
+#include "headers.h"
 
 char question[100];
 
@@ -21,13 +21,13 @@ void askQuestioner(){
 }
 
 void getQuestion(){
-  int i;
-  for (i = 0, i<20, i++){
-    printf("Ask a question! ");
-    fgets(question, 100, stdin);
-    printf("Question " %d + " /20\n");
-    // code to send question to answerer
-  }
+  // int i;
+  // for (i = 0, i<20, i++){
+  //   printf("Ask a question! ");
+  //   fgets(question, 100, stdin);
+  //   printf("Question " %d + " /20\n");
+  //   // code to send question to answerer
+  // }
 }
 
 //more functions to be added

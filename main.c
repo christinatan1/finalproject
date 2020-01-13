@@ -5,9 +5,7 @@
 #include <errno.h>
 #include <fcntl.h>
 
-#include "qfunctions.h"
-#include "afunctions.h"
-#include "header.h"
+#include "headers.h"
 
 int main(int argc, char * argv[]){
 
@@ -38,18 +36,18 @@ void welcomeScreen(){
 }
 
 void playerSelection(){
-  printf("Choose your player: \n");
-  printf(" \t answerer or questioner (a/q)");
-  fgets(player, 5, stdin);
-  player[strlen(player) - 1] = 0;
+  // printf("Choose your player: \n");
+  // printf(" \t answerer or questioner (a/q)");
+  // fgets(player, 5, stdin);
+  // player[strlen(player) - 1] = 0;
 }
 
 void endScreen(){
-  printf("----------------------------------\n\n\n");
-  printf("THANKS FOR PLAYING!\n\n");
-  printf("Winner: %s", winner);
-  printf("\n\n Play Again? (y/n)");
-  char next[100];
-  fgets(next, 2, stdin);
-  printf("----------------------------------\n\n\n");
+  // printf("----------------------------------\n\n\n");
+  // printf("THANKS FOR PLAYING!\n\n");
+  // printf("Winner: %s", winner);
+  // printf("\n\n Play Again? (y/n)");
+  // char next[100];
+  // fgets(next, 2, stdin);
+  // printf("----------------------------------\n\n\n");
 }
