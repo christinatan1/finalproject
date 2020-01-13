@@ -10,6 +10,23 @@ questioner.o: questioner.c headers.h
 answerer.o: answerer.c headers.h
 	gcc -c answerer.c
 
+select: sserver
+
+sserver: select_server.o networking.o
+	gcc -o server select_server.o networking.o
+
+client: client.o networking.o
+	gcc -o client client.o networking.o
+
+client.o: client.c networking.h
+	gcc -c client.c
+
+select_server.o: select_server.c networking.h
+	gcc -c select_server.c
+
+networking.o: networking.c networking.h
+	gcc -c networking.c
+
 run:
 	./program
 

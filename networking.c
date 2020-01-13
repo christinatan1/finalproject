@@ -42,6 +42,15 @@ int server_setup() {
   error_check( i, "server listen" );
   printf("[server] socket in listen state\n");
 
+  //set socket to receive state
+  char buffer[BUFFER_SIZE];
+  printf("enter data: ");
+  fgets(buffer, sizeof(buffer), stdin);
+  *strchr(buffer, '\n') = 0;
+  write(TEST_IP, buffer, sizeof(buffer));
+  read(TEST_IP, buffer, sizeof(buffer));
+  printf("received: [%s]\n", buffer);
+
   //free the structs used by getaddrinfo
   free(hints);
   freeaddrinfo(results);
