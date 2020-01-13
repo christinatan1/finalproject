@@ -17,9 +17,5 @@ int main(int argc, char **argv) {
     write(server_socket, buffer, sizeof(buffer));
     read(server_socket, buffer, sizeof(buffer));
     printf("received: [%s]\n", buffer);
-
-    // set socket to listen state
-    int i = listen(sd, 10);
-    error_check( i, "server listen" );
   }
 }

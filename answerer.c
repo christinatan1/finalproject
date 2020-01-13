@@ -39,3 +39,7 @@ void askAnswerer(){
   sleep(1);
   printf("\nYou have chosen...\tCategory: %s\t\tObject: %s\n", category, object);
 }
+
+void setup() {
+  
+}
