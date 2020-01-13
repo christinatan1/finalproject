@@ -7,28 +7,28 @@
 
 #include "headers.h"
 
-char *player;
-player = (char *)malloc(5);
-char *winner;
-winner = (char *)malloc(5);
+// char *player;
+// player = (char *)malloc(5);
+// char *winner;
+// winner = (char *)malloc(5);
 
 
 int main(int argc, char * argv[]){
 
   welcomeScreen();
-  playerSelection();
+  // playerSelection();
 
-  if (!strcmp(argv[1],"a")){
-    askQuestioner();
-  } else if (!strcmp(argv[1],"q")){
-    askAnswerer();
-  } else {
-    printf("Error: invalid option. Please enter A or Q.\n");
-  }
+  // if (!strcmp(argv[1],"a")){
+  //   askQuestioner();
+  // } else if (!strcmp(argv[1],"q")){
+  //   askAnswerer();
+  // } else {
+  //   printf("Error: invalid option. Please enter A or Q.\n");
+  // }
 
   endScreen();
-  free(player);
-  free(winner);
+  // free(player);
+  // free(winner);
   //printScoreboard();
 }
 
@@ -42,10 +42,10 @@ void welcomeScreen(){
 }
 
 void playerSelection(){
-  printf("Choose your player: \n");
-  printf(" \t answerer or questioner (a/q)");
-  fgets(player, 5, stdin);
-  player[strlen(player) - 1] = 0;
+  // printf("Choose your player: \n");
+  // printf(" \t answerer or questioner (a/q)");
+  // fgets(player, 5, stdin);
+  // player[strlen(player) - 1] = 0;
 }
 
 void endScreen(){
