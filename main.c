@@ -15,13 +15,13 @@ int main(int argc, char * argv[]){
   char winner[100];
   playerSelection();
 
-  if (!strcmp(argv[1],"a")){
-    askQuestioner();
-  } else if (!strcmp(argv[1],"q")){
-    askAnswerer();
-  } else {
-    printf("Error: invalid option. Please enter A or Q.\n");
-  }
+  // if (!strcmp(argv[1],"a")){
+  //   askQuestioner();
+  // } else if (!strcmp(argv[1],"q")){
+  //   askAnswerer();
+  // } else {
+  //   printf("Error: invalid option. Please enter A or Q.\n");
+  // }
 
   endScreen();
   //printScoreboard();
@@ -33,6 +33,7 @@ void welcomeScreen(){
   printf("WELCOME TO 20 QUESTIONS!\n\n");
   printf("By Christina Tan and Stephanie Liu\n\n");
   printf("----------------------------------\n\n\n");
+  sleep(1);
 }
 
 void playerSelection(){
