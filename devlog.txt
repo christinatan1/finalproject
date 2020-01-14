@@ -1,4 +1,8 @@
-
+1/9/20 - Stephanie
+added functions that asks answerer for a category and object
 
 1/13/20 - Christina
 tried to fix some functions on main.c
+
+1/13/20 - Stephanie
+added basic two-way communication for peer-to-peer networking
