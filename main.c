@@ -7,24 +7,18 @@
 
 #include "headers.h"
 
-// char *player;
-// player = (char *)malloc(5);
-// char *winner;
-// winner = (char *)malloc(5);
-
-
 int main(int argc, char * argv[]){
 
   welcomeScreen();
-  // playerSelection();
+  char * name = getName();
+  char * player = playerSelection(name);
 
-  // if (!strcmp(argv[1],"a")){
-  //   askQuestioner();
-  // } else if (!strcmp(argv[1],"q")){
-  //   askAnswerer();
-  // } else {
-  //   printf("Error: invalid option. Please enter A or Q.\n");
-  // }
+  if (strcmp(player, "A") == 0){
+    askAnswerer();
+  }
+  else if (strcmp(player, "Q") == 0) {
+    // askQuestioner();
+  }
 
   endScreen();
   // free(player);
@@ -36,16 +30,31 @@ void welcomeScreen(){
   printf("\n\n\n\n");
   printf("----------------------------------\n\n\n");
   printf("WELCOME TO 20 QUESTIONS!\n\n");
-  printf("By Christina Tan and Stephanie Liu\n\n");
+  printf("By Christina Tan and Stephanie Liu\n\n\n");
   printf("----------------------------------\n\n\n");
   sleep(1);
 }
 
-void playerSelection(){
-  // printf("Choose your player: \n");
-  // printf(" \t answerer or questioner (a/q)");
-  // fgets(player, 5, stdin);
-  // player[strlen(player) - 1] = 0;
+char * getName() {
+  char * name = malloc(20);
+  printf("Enter your name: ");
+  fgets(name, 20, stdin);
+  name[strlen(name) - 1] = 0;
+  return name;
+}
+
+char * playerSelection(char * name){
+  char * player = malloc(10);
+  printf("\nWelcome %s!\n\n", name);
+  sleep(1);
+  while (! (strcmp(player, "A") == 0 || strcmp(player, "Q") == 0)) {
+    printf("Would you like to be an answerer or questioner? (A / Q): ");
+    fgets(player, 10, stdin);
+    player[strlen(player)-1] = 0;
+    printf("\n");
+  }
+  printf("\n----------------------------------\n\n\n");
+  return player;
 }
 
 void endScreen(){

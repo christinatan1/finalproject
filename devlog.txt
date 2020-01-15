@@ -6,3 +6,7 @@ tried to fix some functions on main.c
 
 1/13/20 - Stephanie
 added basic two-way communication for peer-to-peer networking
+
+1/14/20 - Stephanie
+incorporated networking functions into code
+added getName and fixed playerSelection
