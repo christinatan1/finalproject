@@ -7,6 +7,7 @@
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <time.h>
 
 #include "headers.h"
 
@@ -14,6 +15,44 @@ void askQuestioner(){
   printf("You have chosen to be a questioner!\n\n");
   sleep(1);
   printf("Please wait until the answerer has chosen their object.\n");
+  // code to wait for the answerer - networking
+  int i;
+  for (i = 0; i < 20; i++){
+    printf("Please ask a question! %d / 20  ", i);
+    int t;
+    char *question = malloc(50);
+    // for (t = 0; t <= 20; t++){ // time
+    //   fgets(question, 10, stdin);
+    //   wait(1);
+    //   if (question[0] != NULL){
+    //     break;
+    //   }
+    // }
+    if (question[0] == NULL){
+      askRandomQuestion();
+    }
+  }
+
+void askRandomQuestion(){
+  char *x = getCategory();
+  if (strcmp(category, "Person") == 0){
+    // open person.txt files of the questions
+    // read a question from a line
+    
+  }
+
+  if (strcmp(category, "Place") == 0){
+
+  }
+
+  if (strcmp(category, "Place") == 0){
+
+  }
+}
+
+char *getCategory(){
+  //networking stuff
+
 }
 
 void setupClient(int argc, char ** argv) {

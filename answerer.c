@@ -10,7 +10,6 @@
 
 #include "headers.h"
 
-
 char * askCategory(){
   char * category = malloc(10);
   while (! (strcmp(category, "Person") == 0 || strcmp(category, "Place") == 0 || strcmp(category, "Thing") == 0)) {
