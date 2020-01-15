@@ -43,6 +43,7 @@ void askAnswerer(){
   sleep(1);
   printf("You have chosen...\tCategory: %s\t\tObject: %s\n", category, object);
   printf("\n----------------------------------\n\n\n");
+  sleep(1);
 }
 
 void setupServer() {
@@ -55,6 +56,8 @@ void setupServer() {
 
   listen_socket = server_setup();
   client_socket = server_connect(listen_socket);
+
+  printf("Finding opponent...");
 
   while (quesAsked < 20) {
 

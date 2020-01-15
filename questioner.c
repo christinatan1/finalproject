@@ -10,12 +10,10 @@
 
 #include "headers.h"
 
-char question[100];
-
 void askQuestioner(){
-  printf("You have chosen to be a questioner! \n");
+  printf("You have chosen to be a questioner!\n\n");
+  sleep(1);
   printf("Please wait until the answerer has chosen their object.\n");
-  int status;
 }
 
 void setupClient(int argc, char ** argv) {

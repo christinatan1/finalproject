@@ -15,9 +15,10 @@ int main(int argc, char * argv[]){
 
   if (strcmp(player, "A") == 0){
     askAnswerer();
+    //setupServer();
   }
   else if (strcmp(player, "Q") == 0) {
-    // askQuestioner();
+    askQuestioner();
   }
 
   endScreen();
