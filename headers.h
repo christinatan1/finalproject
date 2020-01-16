@@ -21,14 +21,14 @@ void setupServer();
 
 void askQuestioner();
 void getQuestion();
-void setupClient(int argc, char ** argv);
+void setupClient();
 
 #ifndef NETWORKING_H
 #define NETWORKING_H
 
 #define BUFFER_SIZE 256
 #define PORT "12012"
-#define TEST_IP "127.0.0.1"
+
 
 void error_check(int i, char *s);
 int server_setup();

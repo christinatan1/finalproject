@@ -84,6 +84,7 @@ int server_connect(int sd) {
   =========================*/
 int client_setup(char * server) {
   int sd, i;
+  int status;
 
   //create the socket
   sd = socket( AF_INET, SOCK_STREAM, 0 );
@@ -96,7 +97,16 @@ int client_setup(char * server) {
   hints = (struct addrinfo *)calloc(1, sizeof(struct addrinfo));
   hints->ai_family = AF_INET;  //IPv4
   hints->ai_socktype = SOCK_STREAM;  //TCP socket
-  getaddrinfo(server, PORT, hints, &results);
+
+  status = getaddrinfo(server, PORT, hints, &results);
+  while (status != 0) {
+    char server[BUFFER_SIZE];
+    memset(server, 0, 256);
+    printf("Enter the IP Address of your opponent: ");
+    fgets(server, sizeof(server), stdin);
+    *strchr(server, '\n') = 0;
+    status = getaddrinfo(server, PORT, hints, &results);
+  }
 
   //connect to the server
   //connect will bind the socket for us
