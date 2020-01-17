@@ -16,44 +16,25 @@ void askQuestioner(){
   sleep(1);
 }
 
-  // code to wait for the answerer - networking
-  // int i;
-  // for (i = 0; i < 20; i++){
-  //   printf("Please ask a question! %d / 20  ", i);
-  //   int t;
-  //   char *question = malloc(50);
-    // for (t = 0; t <= 20; t++){ // time
-    //   fgets(question, 10, stdin);
-    //   wait(1);
-    //   if (question[0] != NULL){
-    //     break;
-    //   }
-    // }
-    // if (question[0] == NULL){
-    //   askRandomQuestion();
+void randomQuestion(){
+  char * category = getCategory();
+  if (strcmp(category, "Person") == 0){
+    // open person.txt files of the questions
+    // read a question from a line
 
+  }
 
-// void askRandomQuestion(){
-//   char * category = getCategory();
-//   if (strcmp(category, "Person") == 0){
-//     // open person.txt files of the questions
-//     // read a question from a line
-//
-//   }
-//
-//   if (strcmp(category, "Place") == 0){
-//
-//   }
-//
-//   if (strcmp(category, "Place") == 0){
-//
-//   }
-// }
-//
-// char * getCategory(){
-//   //networking stuff
-//
-// }
+  if (strcmp(category, "Place") == 0){
+
+  }
+
+  if (strcmp(category, "Place") == 0){
+
+  }
+}
+
+void getCategory(){
+}
 
 void setupClient(char * name) {
 
@@ -77,10 +58,17 @@ void setupClient(char * name) {
     error_check(i, "name reading");
     strcpy(opponent, buffer);
 
-    while (quesAsked < 3) {
+    // i = read(server_socket, buffer, sizeof(buffer)-1);
+    // error_check(i, "category reading");
+    // strcpy(opponent, buffer);
+
+    while (quesAsked < 20) {
       sleep(1);
-      printf("Your question: ");
+      printf("Your question: (%d/20)", quesAsked);
       fgets(buffer, sizeof(buffer), stdin);
+      if (buffer == NULL){
+         buffer = randomQuestion();
+       }
       *strchr(buffer, '\n') = 0;
       i = write(server_socket, buffer, sizeof(buffer));
       error_check(i, "client writing");

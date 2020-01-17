@@ -23,8 +23,6 @@ int main(int argc, char * argv[]){
   }
 
   endScreen();
-  // free(player);
-  // free(winner);
   //printScoreboard();
 }
 

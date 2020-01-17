@@ -71,6 +71,9 @@ void setupServer(char * name) {
   i = write(client_socket, name, sizeof(name));
   error_check(i, "name writing");
 
+  // i = write(server_socket, name, sizeof(name));
+  // error_check(i, "category writing");
+
   while (quesAsked < 3) {
 
     //select() modifies read_fds
