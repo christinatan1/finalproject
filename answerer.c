@@ -10,6 +10,7 @@
 
 #include "headers.h"
 
+char *category;
 char * askCategory(){
   char * category = malloc(10);
   while (! (strcmp(category, "Person") == 0 || strcmp(category, "Place") == 0 || strcmp(category, "Thing") == 0)) {
@@ -37,7 +38,7 @@ void askAnswerer(){
   sleep(1);
   printf("You have chosen to be an answerer!\n\n");
   sleep(1);
-  char * category = askCategory();
+  category = askCategory();
   char * object = askObject(category);
   sleep(1);
   printf("You have chosen...\tCategory: %s\t\tObject: %s\n", category, object);
@@ -51,6 +52,7 @@ void setupServer(char * name) {
   int quesAsked = 0;
   char buffer[BUFFER_SIZE];
   char * opponent = malloc(20);
+  //char * category = malloc(20);
 
   //set of file descriptors to read from
   fd_set read_fds;
@@ -71,8 +73,8 @@ void setupServer(char * name) {
   i = write(client_socket, name, sizeof(name));
   error_check(i, "name writing");
 
-  // i = write(server_socket, name, sizeof(name));
-  // error_check(i, "category writing");
+  i = write(client_socket, category, sizeof(category));
+  error_check(i, "category writing");
 
   while (quesAsked < 3) {
 
