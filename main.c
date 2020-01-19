@@ -22,7 +22,8 @@ int main(int argc, char * argv[]){
     setupClient(name);
   }
 
-  endScreen();
+  // winner = getWinner();
+  // endScreen();
   //printScoreboard();
 }
 
@@ -57,12 +58,16 @@ char * playerSelection(char * name){
   return player;
 }
 
-void endScreen(){
-  // printf("----------------------------------\n\n\n");
-  // printf("THANKS FOR PLAYING!\n\n");
-  // printf("Winner: %s", winner);
-  // printf("\n\n Play Again? (y/n)");
-  // char next[100];
-  // fgets(next, 2, stdin);
-  // printf("----------------------------------\n\n\n");
-}
+// char * getWinner(){
+//   //networking
+// }
+//
+// void endScreen(){
+//   printf("----------------------------------\n\n\n");
+//   printf("THANKS FOR PLAYING!\n\n");
+//   printf("Winner: %s", winner);
+//   printf("\n\n Play Again? (y/n)");
+//   char next[100];
+//   fgets(next, 2, stdin);
+//   printf("----------------------------------\n\n\n");
+// }

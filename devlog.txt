@@ -22,3 +22,6 @@ used ip address input for networking
 
 1/18/20 - Chrisitna
 added networking for finding category from answerer
+
+1/19/20 - Christina
+added reading in a random question from a specific file based on category.

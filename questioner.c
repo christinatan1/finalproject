@@ -13,27 +13,35 @@
 
 void askQuestioner(){
   printf("You have chosen to be a questioner!\n\n");
-  printf("PLease enter your name: ");
   sleep(1);
 }
-}
+
 
 char *category;
 char *randomQuestion(){
-
+  char *c = malloc(100);
+  FILE *fp;
   if (strcmp(category, "Person") == 0){
-    // open person.txt files of the questions
-    // read a question from a line
-    return "hello";
+    fp = fopen("Person.txt", "r");
+  }
+
+  if (strcmp(category, "Thing") == 0){
+    fp = fopen("Thing.txt", "r");
   }
 
   if (strcmp(category, "Place") == 0){
-    return "hi";
+    fp = fopen("Place.txt", "r");
   }
-
-  if (strcmp(category, "Place") == 0){
-    return "hey";
+  srand(time(0));
+  int randNum = (rand() % 7 + 1);
+  int i;
+  // printf("random number: %d\n", randNum);
+  fgets(c, 100, fp);
+  for (i = 0; i != randNum; i++){
+    fgets(c, 100, fp);
   }
+  printf("Question: %s\n", c);
+  return c;
 }
 
 void setupClient(char * name) {
@@ -45,7 +53,7 @@ void setupClient(char * name) {
     int quesAsked = 0;
     char * opponent = malloc(20);
     char * readin = malloc(20);
-    char * randQuest = malloc(20);
+    char * quest = malloc(100);
     category = malloc(20);
 
     char server[BUFFER_SIZE];
@@ -69,20 +77,19 @@ void setupClient(char * name) {
 
     while (quesAsked < 20) {
       sleep(1);
-      printf("Your question: (%d/20)", quesAsked);
-      readin = fgets(randQuest, sizeof(randQuest), stdin);
-      if (readin == '\n'){  //implement wait later ******
-         randQuest = randomQuestion();
+      printf("(%d/20) Enter a question or press Enter if you are unsure of what question to ask: ", quesAsked);
+      readin = fgets(quest, sizeof(quest), stdin);
+      if (strcmp(readin, "\n") == 0){
+        quest = randomQuestion();
        }
-      *strchr(randQuest, '\n') = 0;
-      i = write(server_socket, buffer, sizeof(buffer));
+      // *strchr(quest, '\n') = 0;
+      i = write(server_socket, quest, 100);
       error_check(i, "client writing");
-
-      i = read(server_socket, buffer, sizeof(buffer));
+      i = read(server_socket, quest, 100);
       error_check(i, "client reading");
       printf("%s's answer: ", opponent);
       sleep(1);
-      printf("%s\n\n", buffer);
+      printf("%s\n\n", quest);
 
       quesAsked++;
     }
