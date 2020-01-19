@@ -76,7 +76,7 @@ void setupServer(char * name) {
   i = write(client_socket, category, sizeof(category));
   error_check(i, "category writing");
 
-  while (quesAsked < 3) {
+  while (quesAsked < 20) {
 
     //select() modifies read_fds
     //we must reset it at each iteration

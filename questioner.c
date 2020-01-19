@@ -13,25 +13,28 @@
 
 void askQuestioner(){
   printf("You have chosen to be a questioner!\n\n");
+  printf("PLease enter your name: ");
   sleep(1);
 }
+}
 
-// void randomQuestion(){
-//   //char * category = getCategory();
-//   if (strcmp(category, "Person") == 0){
-//     // open person.txt files of the questions
-//     // read a question from a line
-//
-//   }
-//
-//   if (strcmp(category, "Place") == 0){
-//
-//   }
-//
-//   if (strcmp(category, "Place") == 0){
-//
-//   }
-// }
+char *category;
+char *randomQuestion(){
+
+  if (strcmp(category, "Person") == 0){
+    // open person.txt files of the questions
+    // read a question from a line
+    return "hello";
+  }
+
+  if (strcmp(category, "Place") == 0){
+    return "hi";
+  }
+
+  if (strcmp(category, "Place") == 0){
+    return "hey";
+  }
+}
 
 void setupClient(char * name) {
 
@@ -41,7 +44,9 @@ void setupClient(char * name) {
     int i;
     int quesAsked = 0;
     char * opponent = malloc(20);
-    char * category = malloc(20);
+    char * readin = malloc(20);
+    char * randQuest = malloc(20);
+    category = malloc(20);
 
     char server[BUFFER_SIZE];
     printf("Enter the IP Address of your opponent: ");
@@ -65,12 +70,11 @@ void setupClient(char * name) {
     while (quesAsked < 20) {
       sleep(1);
       printf("Your question: (%d/20)", quesAsked);
-      wait(1);
-      fgets(buffer, sizeof(buffer), stdin);
-      // if (buffer[1] == NULL){  implement wait later******
-      //    buffer = randomQuestion();
-      //  }
-      *strchr(buffer, '\n') = 0;
+      readin = fgets(randQuest, sizeof(randQuest), stdin);
+      if (readin == '\n'){  //implement wait later ******
+         randQuest = randomQuestion();
+       }
+      *strchr(randQuest, '\n') = 0;
       i = write(server_socket, buffer, sizeof(buffer));
       error_check(i, "client writing");
 
@@ -84,5 +88,3 @@ void setupClient(char * name) {
     }
     close(server_socket);
 }
-
-//more functions to be added
