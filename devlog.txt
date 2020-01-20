@@ -20,12 +20,15 @@ added files with questions for each category. implemented function that waits fo
 1/15/20 - Stephanie
 used ip address input for networking
 
-1/18/20 - Chrisitna
+1/18/20 - Christina
 added networking for finding category from answerer
 
 1/19/20 - Christina
 added reading in a random question from a specific file based on category.
 
-1/19/20
+1/19/20 - Stephanie
 added code for revealing the winner and answer at the end of each round.
 fixed some of random question bugs
+
+1/20/20 - Christina
+added code for end screen and print scoreboard.

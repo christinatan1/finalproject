@@ -27,10 +27,23 @@ int main(int argc, char * argv[]){
     setupClient(name);
   }
 
-  // winner = getWinner();
-  // endScreen();
-  //printScoreboard();
+  char * winner = malloc(20);
+  char * loser = malloc(20);
+  winner = getWinner(name);
+  loser = getLoser(name);
+  int playAgain = endScreen();
+
+  if (playAgain == 0){
+    printScoreboard(winner, loser);
+  }
+  // } else {
+  //   playAgainAnswerer();
+  //   playAgainQuestioner();
+  // }
+
 }
+
+//******************************************
 
 void welcomeScreen(){
   printf("\n\n\n\n");
@@ -63,16 +76,25 @@ char * playerSelection(char * name){
   return player;
 }
 
-// char * getWinner(){
-//   //networking
-// }
-//
-// void endScreen(){
-//   printf("----------------------------------\n\n\n");
-//   printf("THANKS FOR PLAYING!\n\n");
-//   printf("Winner: %s", winner);
-//   printf("\n\n Play Again? (y/n)");
-//   char next[100];
-//   fgets(next, 2, stdin);
-//   printf("----------------------------------\n\n\n");
-// }
+int endScreen(){
+  printf("----------------------------------\n\n\n");
+  printf("THANKS FOR PLAYING!\n\n");
+  char *next = malloc (10);
+  while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
+    printf("\n\n Play Again? (Y/N) ");
+    fgets(next, 2, stdin);
+  }
+  if (strcmp(next, "Y") == 0){
+    return 1;
+  } if (strcmp(next, "N") == 0){
+    return 0;
+  }
+}
+
+void printScoreboard(char * winner, char * loser){
+  printf("----------------------------------\n\n\n");
+  printf("Scoreboard: \n");
+  printf("%-10s\t\t %-10d\n", winner, 1);
+  printf("%-10s\t\t %-10d\n\n\n", loser, 0);
+  printf("----------------------------------\n\n\n");
+}

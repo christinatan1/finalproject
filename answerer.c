@@ -46,6 +46,9 @@ void confirmSelection(char * category, char * object) {
   sleep(1);
 }
 
+int questioner = 0;
+int answerer = 0;
+char * opponent;
 void setupServer(char * name, char * category, char * object) {
   int listen_socket, client_socket;
   int i;
@@ -53,7 +56,7 @@ void setupServer(char * name, char * category, char * object) {
   int status = 0;
   char buffer[BUFFER_SIZE];
   char buffer1[BUFFER_SIZE];
-  char * opponent = malloc(20);
+  opponent = malloc(20);
   fd_set read_fds;
 
   listen_socket = server_setup();
@@ -110,6 +113,7 @@ void setupServer(char * name, char * category, char * object) {
           if (strcmp(buffer1, "Y") == 0) {
             printf("\n\n%s has won this round!\n\n\n", opponent);
             strcat(buffer, "\n\n\nYou guessed it! You have won this round!\n\n\n");
+            questioner++;
             status = 1;
           }
         }
@@ -122,14 +126,31 @@ void setupServer(char * name, char * category, char * object) {
 
   }//end stdin select
 
-  if (quesAsked > 20 & status == 0) {
+  if (quesAsked == 20 & status == 0) {
     printf("\n\n\nYou have won this round!\n\n\n");
+    answerer++;
     memset(buffer, 0, 256);
     strcpy(buffer, object);
     i = write(client_socket, buffer, 100);
     error_check(i, "client writing");
   }
-  
+
   close(listen_socket);
   close(client_socket);
+}
+
+char * getWinner(char * name){
+  if (questioner > answerer){
+    return opponent;
+  } else {
+    return name;
+  }
+}
+
+char * getLoser(char * name){
+  if (questioner > answerer){
+    return name;
+  } else {
+    return opponent;
+  }
 }

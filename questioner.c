@@ -103,7 +103,7 @@ void setupClient(char * name) {
 
       fgets(ques, 256, stdin);
       *strchr(ques, '\n') = 0;
-      printf("strle: %d", strlen(ques));
+      printf("strle: %lu", strlen(ques));
       if (strlen(ques) == 0){
         strncpy(ques, randomQuestion(category), 256);
       }

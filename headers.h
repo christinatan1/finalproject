@@ -12,7 +12,10 @@
 void welcomeScreen();
 char * getName();
 char * playerSelection(char * name);
-void endScreen();
+char * getWinner(char * name);
+char * getLoser(char * name);
+int endScreen();
+void printScoreboard(char * winner, char * loser);
 
 char * getCategory();
 char * getObject(char * category);
