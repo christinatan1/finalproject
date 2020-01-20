@@ -70,8 +70,7 @@ void setupClient(char * name) {
     int quesAsked = 1;
     int status = 0;
     char * opponent = malloc(20);
-    char * category = malloc(20);
-    char * ques = malloc(256);
+    char * category;
 
     char server[BUFFER_SIZE];
     printf("Enter the IP Address of your opponent: ");
@@ -97,21 +96,27 @@ void setupClient(char * name) {
     strncpy(opponent, buffer, sizeof(buffer));
 
     while (quesAsked <= 20 && status == 0) {
+      memset(buffer, 0, 256);
+
       sleep(1);
 
       printf("\n(%d/20) Enter a question (or press Enter for a random question): ", quesAsked);
 
-      fgets(ques, 256, stdin);
-      *strchr(ques, '\n') = 0;
-      printf("strle: %lu", strlen(ques));
-      if (strlen(ques) == 0){
-        strncpy(ques, randomQuestion(category), 256);
+      fgets(buffer, sizeof(buffer), stdin);
+      *strchr(buffer, '\n') = 0;
+      //printf("strle: %lu", strlen(buffer));
+
+      if (strlen(buffer) == 0){
+        char * ques = randomQuestion(category);
+        i = write(server_socket, ques, strlen(ques));
+        error_check(i, "client writing");
       }
 
-      i = write(server_socket, ques, strlen(ques));
-      error_check(i, "client writing");
+      else {
+        i = write(server_socket, buffer, strlen(buffer));
+        error_check(i, "client writing");
+      }
 
-      memset(ques, 0, 256);
       memset(buffer, 0, 256);
 
       i = read(server_socket, buffer, sizeof(buffer));

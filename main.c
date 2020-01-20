@@ -13,6 +13,7 @@ int main(int argc, char * argv[]){
   welcomeScreen();
   char * name = getName();
   char * player = playerSelection(name);
+  char ** winLose;
 
   if (strcmp(player, "A") == 0){
     hiAnswerer();
@@ -27,20 +28,18 @@ int main(int argc, char * argv[]){
     setupClient(name);
   }
 
-  char * winner = malloc(20);
-  char * loser = malloc(20);
-  winner = getWinner(name);
-  loser = getLoser(name);
-  int playAgain = endScreen();
-
-  if (playAgain == 0){
-    printScoreboard(winner, loser);
-  }
+  // char * winner = malloc(20);
+  // char * loser = malloc(20);
+  //
+  // int playAgain = endScreen();
+  //
+  // if (playAgain == 0){
+  //   printScoreboard(winner, loser);
   // } else {
   //   playAgainAnswerer();
   //   playAgainQuestioner();
   // }
-
+  return 0;
 }
 
 //******************************************
@@ -89,6 +88,7 @@ int endScreen(){
   } if (strcmp(next, "N") == 0){
     return 0;
   }
+  return -1;
 }
 
 void printScoreboard(char * winner, char * loser){

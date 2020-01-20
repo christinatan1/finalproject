@@ -12,8 +12,8 @@
 void welcomeScreen();
 char * getName();
 char * playerSelection(char * name);
-char * getWinner(char * name);
-char * getLoser(char * name);
+char * getWinner(char * name, char * opponent);
+char * getLoser(char * name, char * opponent);
 int endScreen();
 void printScoreboard(char * winner, char * loser);
 
@@ -32,7 +32,7 @@ void setupClient(char * name);
 #define NETWORKING_H
 
 #define BUFFER_SIZE 256
-#define PORT "17213"
+#define PORT "27213"
 
 void error_check(int i, char *s);
 int server_setup();

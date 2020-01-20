@@ -32,3 +32,6 @@ fixed some of random question bugs
 
 1/20/20 - Christina
 added code for end screen and print scoreboard.
+
+1/20/20 - Stephanie
+fixed getting random question
