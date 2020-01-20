@@ -11,50 +11,67 @@
 
 #include "headers.h"
 
-void askQuestioner(){
+void hiQuestioner(){
   printf("You have chosen to be a questioner!\n\n");
   sleep(1);
 }
 
+char * randomQuestion(char * category){
+  char * ques = malloc(256);
+  FILE * fp;
 
-char *category;
-char *randomQuestion(){
-  char *c = malloc(100);
-  FILE *fp;
-  if (strcmp(category, "Person") == 0){
+  if (strcmp(category, "Person") == 0)
     fp = fopen("Person.txt", "r");
-  }
 
-  if (strcmp(category, "Thing") == 0){
+  else if (strcmp(category, "Thing") == 0)
     fp = fopen("Thing.txt", "r");
-  }
 
-  if (strcmp(category, "Place") == 0){
+  else if (strcmp(category, "Place") == 0)
     fp = fopen("Place.txt", "r");
-  }
-  srand(time(0));
-  int randNum = (rand() % 7 + 1);
-  int i;
-  // printf("random number: %d\n", randNum);
-  fgets(c, 100, fp);
-  for (i = 0; i != randNum; i++){
-    fgets(c, 100, fp);
-  }
-  printf("Question: %s\n", c);
-  return c;
+
+  int randNum = rand() % 7 + 1;
+  for (int i = 0; i != randNum; i ++)
+    fgets(ques, 256, fp);
+
+  fclose(fp);
+  printf("Random question: %s\n", ques);
+
+  return ques;
 }
 
-void setupClient(char * name) {
+// char * getQuestion(char * category) {
+//   char * ques = malloc(100);
+//   fd_set read_fds;
+//   struct timeval timeout;
+//
+//   FD_ZERO(&read_fds); //0 out fd set
+//   FD_SET(STDIN_FILENO, &read_fds); //add stdin to fd set
+//     //FD_SET(server_socket, &read_fds); //add socket to fd set
+//
+//   timeout.tv_sec = TIMELIMIT;
+//   timeout.tv_usec = 0;
+//
+//   int sret = select(STDIN_FILENO + 1, &read_fds, NULL, NULL, &timeout);
+//
+//   if (sret == 0) {
+//     return randomQuestion(category);
+//   }
+//   else {
+//     fgets(ques, sizeof(ques), stdin);
+//     *strchr(ques, '\n') = 0;
+//   }
+//   return ques;
+// }
 
+void setupClient(char * name) {
     int server_socket;
     char buffer[BUFFER_SIZE];
-    char buffer2[BUFFER_SIZE];
     int i;
-    int quesAsked = 0;
+    int quesAsked = 1;
+    int status = 0;
     char * opponent = malloc(20);
-    char * readin = malloc(20);
-    char * quest = malloc(100);
-    category = malloc(20);
+    char * category = malloc(20);
+    char * ques = malloc(256);
 
     char server[BUFFER_SIZE];
     printf("Enter the IP Address of your opponent: ");
@@ -63,35 +80,59 @@ void setupClient(char * name) {
     server_socket = client_setup( server );
     printf("\n----------------------------------\n\n\n");
 
+    // get category
+    i = read(server_socket, buffer, sizeof(buffer));
+    error_check(i, "category reading");
+    strncpy(category, buffer, sizeof(buffer));
+    memset(buffer, 0, 256);
+    printf("THE CATEGORY IS: %s\n\n", category);
+
+    // give name
     i = write(server_socket, name, sizeof(name));
     error_check(i, "name writing");
 
-    i = read(server_socket, buffer, sizeof(buffer)-1);
+    // get opponent's name
+    i = read(server_socket, buffer, sizeof(buffer));
     error_check(i, "name reading");
-    strcpy(opponent, buffer);
+    strncpy(opponent, buffer, sizeof(buffer));
 
-    i = read(server_socket, buffer2, sizeof(buffer2)-1);
-    error_check(i, "category reading");
-    strcpy(category, buffer2);
-    // printf("This is the category: %s\n", category);
-
-    while (quesAsked < 20) {
+    while (quesAsked <= 20 && status == 0) {
       sleep(1);
-      printf("(%d/20) Enter a question or press Enter if you are unsure of what question to ask: ", quesAsked);
-      readin = fgets(quest, sizeof(quest), stdin);
-      if (strcmp(readin, "\n") == 0){
-        quest = randomQuestion();
-       }
-      // *strchr(quest, '\n') = 0;
-      i = write(server_socket, quest, 100);
+
+      printf("\n(%d/20) Enter a question (or press Enter for a random question): ", quesAsked);
+
+      fgets(ques, 256, stdin);
+      *strchr(ques, '\n') = 0;
+      printf("strle: %d", strlen(ques));
+      if (strlen(ques) == 0){
+        strncpy(ques, randomQuestion(category), 256);
+      }
+
+      i = write(server_socket, ques, strlen(ques));
       error_check(i, "client writing");
-      i = read(server_socket, quest, 100);
+
+      memset(ques, 0, 256);
+      memset(buffer, 0, 256);
+
+      i = read(server_socket, buffer, sizeof(buffer));
       error_check(i, "client reading");
       printf("%s's answer: ", opponent);
       sleep(1);
-      printf("%s\n\n", quest);
+      printf("%s\n", buffer);
+      if (strlen(buffer) > 1)
+        status = 1;
 
       quesAsked++;
+    }
+
+    if (quesAsked > 20 && status == 0) {
+      memset(buffer, 0, 256);
+      i = read(server_socket, buffer, 100);
+      error_check(i, "client writing");
+
+      printf("\n\n\nYou did not guess and lost this round :(\n");
+      sleep(1);
+      printf("The answer is: %s\n\n\n", buffer);
     }
     close(server_socket);
 }

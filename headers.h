@@ -14,21 +14,22 @@ char * getName();
 char * playerSelection(char * name);
 void endScreen();
 
-char * askCategory();
-char * askObject(char * category);
-void askAnswerer();
-void setupServer();
+char * getCategory();
+char * getObject(char * category);
+void hiAnswerer();
+void confirmSelection(char * category, char * object);
+void setupServer(char * name, char * category, char * object);
 
-void askQuestioner();
-void getQuestion();
-void setupClient();
+void hiQuestioner();
+char * randomQuestion(char * category);
+char * getQuestion(char * category);
+void setupClient(char * name);
 
 #ifndef NETWORKING_H
 #define NETWORKING_H
 
 #define BUFFER_SIZE 256
-#define PORT "12012"
-
+#define PORT "17213"
 
 void error_check(int i, char *s);
 int server_setup();

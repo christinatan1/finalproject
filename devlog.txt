@@ -25,3 +25,7 @@ added networking for finding category from answerer
 
 1/19/20 - Christina
 added reading in a random question from a specific file based on category.
+
+1/19/20
+added code for revealing the winner and answer at the end of each round.
+fixed some of random question bugs

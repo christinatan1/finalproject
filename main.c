@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <time.h>
 
 #include "headers.h"
 
@@ -14,11 +15,15 @@ int main(int argc, char * argv[]){
   char * player = playerSelection(name);
 
   if (strcmp(player, "A") == 0){
-    askAnswerer();
-    setupServer(name);
+    hiAnswerer();
+    char * category = getCategory();
+    char * object = getObject(category);
+    confirmSelection(category, object);
+    setupServer(name, category, object);
   }
   else if (strcmp(player, "Q") == 0) {
-    askQuestioner();
+    srand(time(NULL));
+    hiQuestioner();
     setupClient(name);
   }
 
