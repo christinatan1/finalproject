@@ -39,30 +39,6 @@ char * randomQuestion(char * category){
   return ques;
 }
 
-// char * getQuestion(char * category) {
-//   char * ques = malloc(100);
-//   fd_set read_fds;
-//   struct timeval timeout;
-//
-//   FD_ZERO(&read_fds); //0 out fd set
-//   FD_SET(STDIN_FILENO, &read_fds); //add stdin to fd set
-//     //FD_SET(server_socket, &read_fds); //add socket to fd set
-//
-//   timeout.tv_sec = TIMELIMIT;
-//   timeout.tv_usec = 0;
-//
-//   int sret = select(STDIN_FILENO + 1, &read_fds, NULL, NULL, &timeout);
-//
-//   if (sret == 0) {
-//     return randomQuestion(category);
-//   }
-//   else {
-//     fgets(ques, sizeof(ques), stdin);
-//     *strchr(ques, '\n') = 0;
-//   }
-//   return ques;
-// }
-
 void setupClient(char * name) {
     int server_socket;
     char buffer[BUFFER_SIZE];
@@ -140,4 +116,28 @@ void setupClient(char * name) {
       printf("The answer is: %s\n\n\n", buffer);
     }
     close(server_socket);
+}
+
+int endScreenQ(){
+  printf("----------------------------------\n\n\n");
+  printf("THANKS FOR PLAYING!\n\n");
+  char *next = malloc (10);
+  while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
+    printf("\n\n Play Again? (Y/N) ");
+    fgets(next, 2, stdin);
+  }
+  if (strcmp(next, "Y") == 0){
+    return 1;
+  } if (strcmp(next, "N") == 0){
+    return 0;
+  }
+  return -1;
+}
+
+void printScoreboardQ(char ** winLose){
+  printf("----------------------------------\n\n\n");
+  printf("Scoreboard: \n");
+  printf("%-10s\t\t %-10d\n", winLose[1], 1);
+  printf("%-10s\t\t %-10d\n\n\n", winLose[0], 0);
+  printf("----------------------------------\n\n\n");
 }

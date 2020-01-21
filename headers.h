@@ -12,16 +12,19 @@
 void welcomeScreen();
 char * getName();
 char * playerSelection(char * name);
-char * getWinner(char * name, char * opponent);
-char * getLoser(char * name, char * opponent);
-int endScreen();
-void printScoreboard(char * winner, char * loser);
+// char * getWinner(char * name, char * opponent);
+// char * getLoser(char * name, char * opponent);
+int endScreenA();
+int endScreenQ();
+void printScoreboardA(char ** winLose);
+void printScoreboardQ(char ** winLose);
 
 char * getCategory();
 char * getObject(char * category);
 void hiAnswerer();
+char * getOpponent();
 void confirmSelection(char * category, char * object);
-void setupServer(char * name, char * category, char * object);
+char ** setupServer(char * name, char * category, char * object);
 
 void hiQuestioner();
 char * randomQuestion(char * category);

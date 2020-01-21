@@ -46,10 +46,8 @@ void confirmSelection(char * category, char * object) {
   sleep(1);
 }
 
-int questioner = 0;
-int answerer = 0;
 
-void setupServer(char * name, char * category, char * object) {
+char ** setupServer(char * name, char * category, char * object) {
   int listen_socket, client_socket;
   int i;
   int quesAsked = 1;
@@ -58,6 +56,9 @@ void setupServer(char * name, char * category, char * object) {
   char buffer1[BUFFER_SIZE];
   char * opponent = malloc(20);
   fd_set read_fds;
+  char ** output = malloc(20);
+  int questioner = 0;
+  int answerer = 0;
 
   listen_socket = server_setup();
   printf("Please wait for an opponent...\n\n");
@@ -72,7 +73,7 @@ void setupServer(char * name, char * category, char * object) {
   i = write(client_socket, category, sizeof(category));
   error_check(i, "category writing");
 
-  // get opponent's name
+  //get name
   i = read(client_socket, buffer, sizeof(buffer));
   error_check(i, "name reading");
   strncpy(opponent, buffer, sizeof(buffer));
@@ -92,7 +93,7 @@ void setupServer(char * name, char * category, char * object) {
     // select(listen_socket + 1, &read_fds, NULL, NULL, NULL);
 
     i = read(client_socket, buffer, sizeof(buffer));
-    error_check( i, "server reading" );
+    error_check( i, "server reading");
     printf("\n(%d/20) %s asks: ", quesAsked, opponent);
     sleep(1);
     printf("%s\n", buffer);
@@ -112,8 +113,9 @@ void setupServer(char * name, char * category, char * object) {
           *strchr(buffer1, '\n') = 0;
           if (strcmp(buffer1, "Y") == 0) {
             printf("\n\n%s has won this round!\n\n\n", opponent);
+            output[0] = opponent;
+            output[1] = name;
             strcat(buffer, "\n\n\nYou guessed it! You have won this round!\n\n\n");
-            questioner++;
             status = 1;
           }
         }
@@ -128,7 +130,8 @@ void setupServer(char * name, char * category, char * object) {
 
   if (quesAsked > 20 & status == 0) {
     printf("\n\n\nYou have won this round!\n\n\n");
-    answerer++;
+    output[0] = name;
+    output[1] = opponent;
     memset(buffer, 0, 256);
     strcpy(buffer, object);
     i = write(client_socket, buffer, 100);
@@ -137,21 +140,58 @@ void setupServer(char * name, char * category, char * object) {
 
   close(listen_socket);
   close(client_socket);
-  
+
+  return output;
+
 }
 
-char * getWinner(char * name, char * opponent){
-  if (questioner > answerer){
-    return opponent;
-  } else {
-    return name;
+// char * getWinner(char * name, char * opponent){
+//   if (questioner > answerer){
+//     return opponent;
+//   } else {
+//     return name;
+//   }
+// }
+//
+// char * getLoser(char * name, char * opponent){
+//   if (questioner > answerer){
+//     return name;
+//   } else {
+//     return opponent;
+//   }
+// }
+
+// char * getOpponent(){
+//   char * output = malloc(20);
+//   char buffer[BUFFER_SIZE];
+//   int client_socket;
+//   int i;
+//   i = read(client_socket, buffer, sizeof(buffer));
+//   error_check(i, "name reading");
+//   strncpy(output, buffer, sizeof(buffer));
+//   return output;
+// }
+
+int endScreenA(){
+  printf("----------------------------------\n\n\n");
+  printf("THANKS FOR PLAYING!\n\n");
+  char *next = malloc (10);
+  while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
+    printf("\n\n Play Again? (Y/N) ");
+    fgets(next, 2, stdin);
   }
+  if (strcmp(next, "Y") == 0){
+    return 1;
+  } if (strcmp(next, "N") == 0){
+    return 0;
+  }
+  return -1;
 }
 
-char * getLoser(char * name, char * opponent){
-  if (questioner > answerer){
-    return name;
-  } else {
-    return opponent;
-  }
+void printScoreboardA(char ** winLose){
+  printf("----------------------------------\n\n\n");
+  printf("Scoreboard: \n");
+  printf("%-10s\t\t %-10d\n", winLose[1], 1);
+  printf("%-10s\t\t %-10d\n\n\n", winLose[0], 0);
+  printf("----------------------------------\n\n\n");
 }
