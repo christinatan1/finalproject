@@ -30,7 +30,6 @@ char * randomQuestion(char * category){
     fp = fopen("Place.txt", "r");
 
   int randNum = rand() % 7 + 1;
-  printf("%d\n", randNum);
   for (int i = 0; i < randNum; i ++)
     fgets(ques, 256, fp);
 
