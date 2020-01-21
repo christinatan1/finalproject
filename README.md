@@ -1,6 +1,6 @@
 # Systems Final Project
 
-**_Stephanie Liu and Christina Tan, Period 2_**
+**_Stephanie Liu and Christina Tan, Period 5_**
 
 # Description of project:
 Our project mimics the game 20 Questions. There are two players: an answerer and a questioner. The answerer thinks of an object from one of the following categories: Person, Place, or Thing, and the questioner has to guess the object. The questioner can ask 20 questions to figure out the object. The answerer can only reply with “Y” or “N”. If after 20 questions, the questioner has not guessed the object, the answerer wins and the answer is revealed. If the questioner does guess the object, the questioner wins.
