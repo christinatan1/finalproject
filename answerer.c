@@ -145,53 +145,26 @@ char ** setupServer(char * name, char * category, char * object) {
 
 }
 
-// char * getWinner(char * name, char * opponent){
-//   if (questioner > answerer){
-//     return opponent;
-//   } else {
-//     return name;
+// int endScreenA(){
+//   printf("----------------------------------\n\n\n");
+//   printf("THANKS FOR PLAYING!\n\n");
+//   char *next = malloc (10);
+//   while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
+//     printf("\n\n Play Again? (Y/N) ");
+//     fgets(next, 2, stdin);
 //   }
-// }
-//
-// char * getLoser(char * name, char * opponent){
-//   if (questioner > answerer){
-//     return name;
-//   } else {
-//     return opponent;
+//   if (strcmp(next, "Y") == 0){
+//     return 1;
+//   } if (strcmp(next, "N") == 0){
+//     return 0;
 //   }
+//   return -1;
 // }
 
-// char * getOpponent(){
-//   char * output = malloc(20);
-//   char buffer[BUFFER_SIZE];
-//   int client_socket;
-//   int i;
-//   i = read(client_socket, buffer, sizeof(buffer));
-//   error_check(i, "name reading");
-//   strncpy(output, buffer, sizeof(buffer));
-//   return output;
+// void printScoreboardA(char ** winLose){
+//   printf("----------------------------------\n\n\n");
+//   printf("Scoreboard: \n");
+//   printf("%-10s\t\t %-10d\n", winLose[1], 1);
+//   printf("%-10s\t\t %-10d\n\n\n", winLose[0], 0);
+//   printf("----------------------------------\n\n\n");
 // }
-
-int endScreenA(){
-  printf("----------------------------------\n\n\n");
-  printf("THANKS FOR PLAYING!\n\n");
-  char *next = malloc (10);
-  while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
-    printf("\n\n Play Again? (Y/N) ");
-    fgets(next, 2, stdin);
-  }
-  if (strcmp(next, "Y") == 0){
-    return 1;
-  } if (strcmp(next, "N") == 0){
-    return 0;
-  }
-  return -1;
-}
-
-void printScoreboardA(char ** winLose){
-  printf("----------------------------------\n\n\n");
-  printf("Scoreboard: \n");
-  printf("%-10s\t\t %-10d\n", winLose[1], 1);
-  printf("%-10s\t\t %-10d\n\n\n", winLose[0], 0);
-  printf("----------------------------------\n\n\n");
-}

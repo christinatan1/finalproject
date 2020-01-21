@@ -30,7 +30,8 @@ char * randomQuestion(char * category){
     fp = fopen("Place.txt", "r");
 
   int randNum = rand() % 7 + 1;
-  for (int i = 0; i != randNum; i ++)
+  printf("%d\n", randNum);
+  for (int i = 0; i < randNum; i ++)
     fgets(ques, 256, fp);
 
   fclose(fp);
@@ -118,26 +119,26 @@ void setupClient(char * name) {
     close(server_socket);
 }
 
-int endScreenQ(){
-  printf("----------------------------------\n\n\n");
-  printf("THANKS FOR PLAYING!\n\n");
-  char *next = malloc (10);
-  while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
-    printf("\n\n Play Again? (Y/N) ");
-    fgets(next, 2, stdin);
-  }
-  if (strcmp(next, "Y") == 0){
-    return 1;
-  } if (strcmp(next, "N") == 0){
-    return 0;
-  }
-  return -1;
-}
-
-void printScoreboardQ(char ** winLose){
-  printf("----------------------------------\n\n\n");
-  printf("Scoreboard: \n");
-  printf("%-10s\t\t %-10d\n", winLose[1], 1);
-  printf("%-10s\t\t %-10d\n\n\n", winLose[0], 0);
-  printf("----------------------------------\n\n\n");
-}
+// int endScreenQ(){
+//   printf("----------------------------------\n\n\n");
+//   printf("THANKS FOR PLAYING!\n\n");
+//   char *next = malloc (10);
+//   while (! (strcmp(next, "Y") == 0 || strcmp(next, "N") == 0)) {
+//     printf("\n\n Play Again? (Y/N) ");
+//     fgets(next, 2, stdin);
+//   }
+//   if (strcmp(next, "Y") == 0){
+//     return 1;
+//   } if (strcmp(next, "N") == 0){
+//     return 0;
+//   }
+//   return -1;
+// }
+//
+// void printScoreboardQ(char ** winLose){
+//   printf("----------------------------------\n\n\n");
+//   printf("Scoreboard: \n");
+//   printf("%-10s\t\t %-10d\n", winLose[1], 1);
+//   printf("%-10s\t\t %-10d\n\n\n", winLose[0], 0);
+//   printf("----------------------------------\n\n\n");
+// }

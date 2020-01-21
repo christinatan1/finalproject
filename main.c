@@ -23,36 +23,36 @@ int main(int argc, char * argv[]){
     winLose = setupServer(name, category, object);
   }
   else if (strcmp(player, "Q") == 0) {
-    // srand(time(NULL));
+    srand(time(NULL));
     hiQuestioner();
     setupClient(name);
   }
 
-  int playAgainA = endScreenA();
-  int playAgainQ = endScreenQ();
+  // int playAgainA = endScreenA();
+  // int playAgainQ = endScreenQ();
+  //
+  // if (playAgainA == 0){
+  //   printScoreboardA(winLose);
+  //   //printf("Thanks for playing! \n");
+  // }
+  // if (playAgainQ == 0){
+  //   printScoreboardQ(winLose);
+  //   //printf("Thanks for playing! \n");
+  // }
+  // if (playAgainA == 1){
+  //   char * category = getCategory();
+  //   char * object = getObject(category);
+  //   confirmSelection(category, object);
+  //   winLose = setupServer(name, category, object);
+  // }
+  // if (playAgainQ == 1){
+  //   hiQuestioner();
+  //   setupClient(name);
+  // }
 
-  if (playAgainA == 0){
-    printScoreboardA(winLose);
-    //printf("Thanks for playing! \n");
-  }
-  if (playAgainQ == 0){
-    printScoreboardQ(winLose);
-    //printf("Thanks for playing! \n");
-  }
-  if (playAgainA == 1){
-    char * category = getCategory();
-    char * object = getObject(category);
-    confirmSelection(category, object);
-    winLose = setupServer(name, category, object);
-  }
-  if (playAgainQ == 1){
-    printf("0\n");
-    //hiQuestioner();
-    //setupClient(name);
-  }
-    // printf("playAgainA: %d\n", playAgainA);
-    // printf("playAgainQ: %d\n", playAgainQ);
-
+  printf("\n----------------------------------\n\n\n");
+  printf("THANKS FOR PLAYING! \n");
+  printf("\n\n\n----------------------------------\n\n\n");
   return 0;
 }
 
@@ -88,7 +88,7 @@ char * playerSelection(char * name){
   printf("\n----------------------------------\n\n\n");
   return player;
 }
-
+//
 // int endScreen(){
 //   printf("----------------------------------\n\n\n");
 //   printf("THANKS FOR PLAYING!\n\n");
