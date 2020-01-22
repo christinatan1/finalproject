@@ -116,6 +116,8 @@ void setupClient(char * name) {
       printf("The answer is: %s\n\n\n", buffer);
     }
     close(server_socket);
+    free(opponent);
+    free(category);
 }
 
 // int endScreenQ(){
