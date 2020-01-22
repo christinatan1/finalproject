@@ -141,6 +141,7 @@ char ** setupServer(char * name, char * category, char * object) {
   close(listen_socket);
   close(client_socket);
 
+  free(opponent);
   return output;
 
 }
