@@ -21,12 +21,14 @@ int main(int argc, char * argv[]){
     char * object = getObject(category);
     confirmSelection(category, object);
     winLose = setupServer(name, category, object);
+    free(winLose);
   }
   else if (strcmp(player, "Q") == 0) {
     srand(time(NULL));
     hiQuestioner();
     setupClient(name);
   }
+
 
   // int playAgainA = endScreenA();
   // int playAgainQ = endScreenQ();
@@ -55,7 +57,6 @@ int main(int argc, char * argv[]){
   printf("\n\n\n----------------------------------\n\n\n");
   free(name);
   free(player);
-  free(winLose);
   return 0;
 }
 

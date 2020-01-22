@@ -100,7 +100,7 @@ char ** setupServer(char * name, char * category, char * object) {
 
     sleep(1);
 
-    while (!(strncmp(buffer, "Y", 1) == 0 || strncmp(buffer, "N", 1) == 0)) {
+    while (!(strcmp(buffer, "Y") == 0 || strcmp(buffer, "N") == 0) && status == 0) {
       printf("Your answer (Y / N): ");
       fgets(buffer, sizeof(buffer), stdin);
       *strchr(buffer, '\n') = 0;
@@ -113,8 +113,8 @@ char ** setupServer(char * name, char * category, char * object) {
           *strchr(buffer1, '\n') = 0;
           if (strcmp(buffer1, "Y") == 0) {
             printf("\n\n%s has won this round!\n\n\n", opponent);
-            output[0] = opponent;
-            output[1] = name;
+            // strcpy(output[0], opponent);
+            // strcpy(output[1], name);
             strcat(buffer, "\n\n\nYou guessed it! You have won this round!\n\n\n");
             status = 1;
           }
@@ -128,10 +128,10 @@ char ** setupServer(char * name, char * category, char * object) {
 
   }//end stdin select
 
-  if (quesAsked > 20 & status == 0) {
+  if (quesAsked > 20 && status == 0) {
     printf("\n\n\nYou have won this round!\n\n\n");
-    output[0] = name;
-    output[1] = opponent;
+    // strcpy(output[0], name);
+    // strcpy(output[1], opponent);
     memset(buffer, 0, 256);
     strcpy(buffer, object);
     i = write(client_socket, buffer, 100);

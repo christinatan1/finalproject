@@ -86,6 +86,7 @@ void setupClient(char * name) {
         char * ques = randomQuestion(category);
         i = write(server_socket, ques, strlen(ques));
         error_check(i, "client writing");
+        free(ques);
       }
 
       else {
@@ -115,9 +116,9 @@ void setupClient(char * name) {
       sleep(1);
       printf("The answer is: %s\n\n\n", buffer);
     }
+    
     close(server_socket);
     free(opponent);
-    free(category);
 }
 
 // int endScreenQ(){
