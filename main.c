@@ -53,6 +53,9 @@ int main(int argc, char * argv[]){
   printf("\n----------------------------------\n\n\n");
   printf("THANKS FOR PLAYING! \n");
   printf("\n\n\n----------------------------------\n\n\n");
+  free(name);
+  free(player);
+  free(winLose);
   return 0;
 }
 
